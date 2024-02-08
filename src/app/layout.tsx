@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { ThemeProvider } from "@/providers/theme-providers";
 
@@ -18,9 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-    appearance={{baseTheme: dark}}>
-    <html lang="en">
+
+    <html lang="en"
+      suppressHydrationWarning>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -30,6 +29,5 @@ export default function RootLayout({
         <body className={font.className}>{children}</body>
       </ThemeProvider>
     </html>
-    </ClerkProvider>
   );
 }
